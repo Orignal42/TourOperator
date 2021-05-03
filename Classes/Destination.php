@@ -3,7 +3,7 @@
 class Destination {
 
     
-    // protected $id;
+    protected $id;
     protected string $location;
     protected int $price;
     protected int $id_tour_operator;

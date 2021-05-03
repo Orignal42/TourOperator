@@ -2,7 +2,7 @@
 
 class Review {
     
-    // protected $id;
+    protected $id;
     protected string $message;
     protected string $author;
     protected int $id_tour_operator;

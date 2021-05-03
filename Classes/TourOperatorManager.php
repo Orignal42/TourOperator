@@ -13,7 +13,7 @@ class TourOperatorManager {
     {
       
 
-      $q = $this->db->prepare('INSERT INTO tour_operator(name, link, garde, is_prenium) VALUES(:name, :link, :garde, :is_prenium)');
+      $q = $this->db->prepare('INSERT INTO tour_operator(name, link, grade, is_prenium) VALUES(:name, :link, :grade, :is_prenium)');
       
       $q->bindValue(':name', $tourOperator->getName());
       $q->bindValue(':link', $tourOperator->getLink());
