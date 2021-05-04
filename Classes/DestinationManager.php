@@ -26,51 +26,70 @@ class DestinationManager {
     ]);
   }
 
-    /* RECUPERER DESTI POUR LES AFFICHER */
+  /* RECUPERER DESTI POUR LES AFFICHER */
 
-     public function getList() {
-      $desti = [];
-      
-      $q = $this->db->prepare('SELECT * FROM destinations');
-      $q->execute();
-      
-      while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
-      {
-        echo '<br>';
-        array_push($desti, new Destination ($donnees));
-      }
-      
-      return $desti;
+  public function getList()
+  {
+    $desti = [];
+    
+    $q = $this->db->prepare('SELECT * FROM destinations');
+    $q->execute();
+    
+    while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+    {
+      echo '<br>';
+      array_push($desti, new Destination ($donnees));
     }
+    
+    return $desti;
+  }
 
     /* JOIN DESTINATIONS W/ TO */
 
-    public function getDestibyTo(Destination $destination){
+  public function getDestibyTo(Destination $destination)
+  {
 
-      $q = $this->db->prepare('SELECT * FROM tour_operators WHERE id=?');
-        
+    $q = $this->db->prepare('SELECT * FROM tour_operators WHERE id=?');
       
-    $q->execute([$destination->getId()]);
-      $To = $q->fetch(PDO::FETCH_ASSOC);
-      $test = new TourOperator($To);
+    
+    $q->execute([$destination->getIdTourOperator()]);
+    $To = $q->fetch(PDO::FETCH_ASSOC);
+    $test = new TourOperator($To);
 
-      return $test;
+    return $test;
+  }
+
+  public function getDestinationByLocation($location)
+  {
+
+    $destinationCollection = [];
+
+    $q = $this->db->prepare('SELECT * FROM destinations WHERE location=?');
+      
+    
+    $q->execute([$location]);
+    $destinations = $q->fetchAll(PDO::FETCH_ASSOC);
+    foreach ($destinations as $destinationArray) {
+      array_push($destinationCollection, new Destination($destinationArray));
     }
 
-    public function getDestinationByLocation($location){
+    return $destinationCollection;
+  }
 
-      $destinationCollection = [];
-      
-      $q = $this->db->prepare('SELECT * FROM destinations WHERE location=?');
-        
-      
-      $q->execute([$location]);
-      $destinations = $q->fetchAll(PDO::FETCH_ASSOC);
-      foreach ($destinations as $destinationArray) {
-        array_push($destinationCollection, new Destination($destinationArray));
-      }
+    /* INSERT DATA FORM */
 
-      return $destinationCollection;
-    }
+  public function createDestination($destination)
+  {
+    $locationStatement = $this->pdo->prepare("INSERT INTO destinations (location, price, id_tour_operator) VALUE (:location, :price, :id_tour_operator)");
+
+    $locationStatement->bindValue("location", $destination->getLocation(), PDO::PARAM_STR);
+
+    $locationStatement->bindValue("price", $destination->getPrice(), PDO::PARAM_INT);
+
+    $locationStatement->bindValue("id_tour_operator", $destination->getIdTourOperator(), PDO::PARAM_INT);
+
+    $locationStatement->execute();
+    
+  }
 
 }

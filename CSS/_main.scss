@@ -6,3 +6,12 @@ body {
   font-family: 'Abril Fatface', cursive;
   text-align: center;
 }
+
+
+.card-index {
+  display: flex;
+
+  .marg{
+    margin: 1rem;
+  }
+}

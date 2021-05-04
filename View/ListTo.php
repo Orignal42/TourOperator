@@ -18,7 +18,7 @@
         echo "<h1>".$_GET['destination']."</h1>"; 
        foreach ($arrayDestination as $destination){
            $to =  $test->getDestibyTo($destination);
-            echo $to->getName().' '.$destination->getPrice();
+            echo $to->getName().' '.$destination->getPrice().'$'.'<br>';
         }
     }
 

@@ -5,4 +5,11 @@ body {
   text-align: center;
 }
 
+.card-index {
+  display: flex;
+}
+.card-index .marg {
+  margin: 1rem;
+}
+
 /*# sourceMappingURL=main.css.map */

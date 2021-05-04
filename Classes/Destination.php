@@ -5,6 +5,8 @@ class Destination {
     
     protected $id;
     protected string $location;
+    protected string $img;
+    protected string $description;
     protected int $price;
     protected int $id_tour_operator;
 
@@ -29,12 +31,30 @@ class Destination {
         }
     }
 
+    /* GETTER SETTER */
+
     public function getId (){
         return $this->id;
     }
 
     public function setId ($id){
         $this->id = $id;
+    }
+
+    public function getImg (){
+        return $this->img;
+    }
+
+    public function setImg ($img){
+        $this->img = $img;
+    }
+
+    public function getDescription (){
+        return $this->description;
+    }
+
+    public function setDescription ($description){
+        $this->description = $description;
     }
 
     public function getLocation (){
@@ -57,7 +77,7 @@ class Destination {
         return $this->id_tour_operator;
     }
 
-    public function setIdTourOperator ($id_tour_operator){
+    public function setId_tour_operator ($id_tour_operator){
         $this->id_tour_operator = $id_tour_operator;
     }
 
