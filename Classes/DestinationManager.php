@@ -59,7 +59,7 @@ class DestinationManager {
     return $test;
   }
 
-  public function getDestinationByLocation($location)
+  public function getDestinationByLocation(Destination $location)
   {
 
     $destinationCollection = [];
@@ -67,7 +67,7 @@ class DestinationManager {
     $q = $this->db->prepare('SELECT * FROM destinations WHERE location=?');
       
     
-    $q->execute([$location]);
+    $q->execute([$location->getLocation()]);
     $destinations = $q->fetchAll(PDO::FETCH_ASSOC);
     foreach ($destinations as $destinationArray) {
       array_push($destinationCollection, new Destination($destinationArray));
@@ -76,20 +76,26 @@ class DestinationManager {
     return $destinationCollection;
   }
 
-    /* INSERT DATA FORM */
+  /* METHODE POUR PAS AVOIR DE DOUBLON */
 
-  public function createDestination($destination)
+  public function getListGroupByName()
   {
-    $locationStatement = $this->pdo->prepare("INSERT INTO destinations (location, price, id_tour_operator) VALUE (:location, :price, :id_tour_operator)");
 
-    $locationStatement->bindValue("location", $destination->getLocation(), PDO::PARAM_STR);
+    $q = $this->db->prepare('SELECT location, img, description FROM destinations GROUP BY location, img, description');
 
-    $locationStatement->bindValue("price", $destination->getPrice(), PDO::PARAM_INT);
+    $destinations = [];
 
-    $locationStatement->bindValue("id_tour_operator", $destination->getIdTourOperator(), PDO::PARAM_INT);
+    $q->execute();
 
-    $locationStatement->execute();
-    
+    while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+    {
+      array_push($destinations, new Destination ($donnees));
+    }
+      return $destinations;
   }
+
+  /* AJOUTER INFO FORM SELECT */
+
+  
 
 }

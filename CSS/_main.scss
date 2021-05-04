@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap');
 
+@import 'navbar';
 
 body {
   background-color: #d7e3fc;
@@ -7,6 +8,9 @@ body {
   text-align: center;
 }
 
+/* INDEX */
+
+/* CARDS */
 
 .card-index {
   display: flex;
@@ -14,4 +18,13 @@ body {
   .marg{
     margin: 1rem;
   }
+}
+
+/* ADMIN */
+
+/* FORMS */
+
+form{
+  display: flex;
+  margin: 1rem;
 }

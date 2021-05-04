@@ -14,7 +14,7 @@ include 'View/Header.php';
 <?php
 
 $destination = new DestinationManager($pdo);
-$allDestinations = $destination->getList();
+$allDestinations = $destination->getListGroupByName();
 
 foreach ($allDestinations as $rowDestination){
     ?>

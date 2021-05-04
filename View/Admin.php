@@ -1,15 +1,65 @@
 <?php
 
-include '../Process/Autoload.php';
+    include '../Process/Autoload.php';
 
-require_once("../Process/Connexion.php");
+    require_once("../Process/Connexion.php");
 
-include 'Header.php';
+    include 'Header.php';
+
+    $destination = new DestinationManager($pdo);
+    $allDestinations = $destination->getListGroupByName();
+
+    $tourOp = new TourOperatorManager($pdo);
+    $allTourOp = $tourOp->getList();
+
+
+    if (isset($_POST['price'])){
+
+        $newDestination = new Destination(['location'=>$_POST['location'], 'id_tour_operator'=>$_POST['to'], 'price'=>$_POST['price']]);
+        $operator = new TourOperator(['id'=>$_POST['to']]);
+        $destination->add($newDestination, $operator);
+    
+    }
+
+    if (isset($_POST['link'])){
+
+        $newTourOp = new TourOperator(['name'=>$_POST['name'], 'grade'=>$_POST['grade'], 'link'=>$_POST['link'], 'is_premium'=>$_POST['premium']]);
+        $tourOp->add($newTourOp);
+    }
 
 ?>
 
+<!-- FORM 1 -->
 
-<form method="post" action="">
+<h3>Create a new TO :</h3>
+<form action="Admin.php" method="post">
+    <div class="labels">
+        <label>* Name</label>
+        <input type="text" name="name" placeholder="TripAwsome.." required>
+    </div>
+    <div class="labels">
+        <label>* Grade</label>
+        <input type="number" name="grade" min="0" max="5">
+    </div>
+    <div class="labels">
+        <label>* link</label>
+        <input type="text" name="link" placeholder="https://..." required>
+    </div>
+    <div class="labels">
+        <label>* Premium</label>
+        <input type="number" name="premium" min="0" max="1">
+    </div>
+
+    <input type="submit" id='submit' value='Submit'>
+
+</form>
+
+<!-- FORM 2 -->
+
+<!-- FORM 3 SELECT -->
+<h3>Create a new Trip :</h3>
+
+<form action="Admin.php" method="post" class="select">
                     
     <div class="labels">
         <label>* Location :</label>
@@ -17,73 +67,47 @@ include 'Header.php';
     <div class="rightTab">
         <select name="location">
             <option value="">Please choose a location</option>
-            <option value="corse">Corse</option>
-            <option value="sardinia">Sardinia</option>
-            <option value="ny">New York</option>
-            <option value="paris">Paris</option>
-            <option value="vancouver">Vancouver</option>
-            <option value="london">London</option>
-            <option value="maroco">Maroco</option>
-            <option value="tokyo">Tokyo</option>
-            <option value="venise">Venise</option>
-            <option value="barcelona">Barcelona</option>
+
+            <?php foreach ($allDestinations as $rowDestination) { ?>
+
+                <option value="<?=$rowDestination->getLocation()?>"><?=$rowDestination->getLocation()?></option>
+
+            <?php } ?>
+            
         </select>
     </div>     
 
+    <div class="labels">
+        <label >* TO :</label>
+    </div>
+    <div class="rightTab">
+        <select name="to">
+            <option value="">Please choose a TO</option>
+
+            <?php foreach ($allTourOp as $rowTourOp) { ?>
+
+                <option value="<?=intval($rowTourOp->getId())?>"><?=$rowTourOp->getName()?></option>
+
+            <?php } ?>
+        </select>
+    </div>
+
+    
 
     <div class="labels">
-        <label for="username">* Price :</label>
+        <label for="price">* Price :</label>
     </div>
     <div class="rightTab">
         <input type="text" name="price" required placeholder="600$">
     </div>
 
+    
 
-    <!-- <div class="labels">
-        <label>* TO :</label>
-    </div>
-    <div class="rightTab">
-        <input type="text" name="name">
-    </div>        
-        
-    <div class="labels">
-        <label>* Grade :</label>
-    </div>
-    <div class="rightTab">
-        <input type="number" name="grade" required>
-    </div>  
-
-    <div class="labels">
-        <label>* Link :</label>
-    </div>
-    <div class="rightTab">
-        <input type="text" name="link" required placeholder="https//...">
-    </div>  -->
-
-        <input type="submit" id='submit' value='SIGN UP'>
+        <input type="submit" id='submit' value='Submit'>
 
 </form>
 
 
-<?php 
-
-    if(isset($_POST['location']) && !empty($_POST['location']) && isset($_POST['price']) && !empty($_POST['price']))
-    {
-        $connexionManager = new DestinationManager($pdo);
-        
-        $destination = new Destination(["location"=>$_POST["location"], "price"=>intval($_POST["price"]), "id_tour_operator"=>intval($_POST["id_tour_operator"])]); 
-
-        $connexionManager->createDestination($destination);
-
-        header("Location: ../Admin.php?message=Nouvelle destination créée.");
-    } 
-        
-    else
-    {
-        header("Location: ../Admin.php?message=Erreur, veuillez remplir les champs.");
-    }
-
-?>
 
 
 <?php

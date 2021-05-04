@@ -6,7 +6,7 @@ class TourOperator {
     protected string $name;
     protected string $link;
     protected int $grade;
-    protected bool $is_prenium;
+    protected bool $is_premium;
 
     /* CONSTRUCT */
 
@@ -61,13 +61,14 @@ class TourOperator {
     }
 
     public function isIsPremium (){
-        return $this->is_prenium;
+        return $this->is_premium;
     }
 
-    public function setIsPremium ($is_prenium){
-        $this->is_prenium = $is_prenium;
+    public function setIs_premium ($is_premium){
+        $this->is_premium = $is_premium;
     }
 
+    
 }
 
     
