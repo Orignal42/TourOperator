@@ -10,8 +10,9 @@
 
 
 <?php
+
  $test = new DestinationManager($pdo);
- 
+
     if (isset($_GET['destination'])) {
        $arrayDestination = $test->getDestinationByLocation($_GET['destination']);
         echo "<h1>".$_GET['destination']."</h1>"; 

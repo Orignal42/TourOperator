@@ -58,7 +58,9 @@ class DestinationManager {
     }
 
     public function getDestinationByLocation($location){
+
       $destinationCollection = [];
+      
       $q = $this->db->prepare('SELECT * FROM destinations WHERE location=?');
         
       
