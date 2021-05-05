@@ -12,6 +12,25 @@
     $tourOp = new TourOperatorManager($pdo);
     $allTourOp = $tourOp->getList();
 
+    /* IF FORM 1 */
+
+    if (isset($_POST['link'])){
+
+        $newTourOp = new TourOperator(['name'=>$_POST['name'], 'grade'=>$_POST['grade'], 'link'=>$_POST['link'], 'is_premium'=>$_POST['premium']]);
+        $tourOp->add($newTourOp);
+    }
+
+    /* IF FORM 2 */
+
+    if (isset($_POST['to'])){
+
+        $newDestination = new Destination(['location'=>$_POST['location'], 'id_tour_operator'=>$_POST['to'], 'price'=>$_POST['price'], 'img'=>$_POST['image'], 'description'=>$_POST['description']]);
+        $operator = new TourOperator(['id'=>$_POST['to']]);
+        $destination->add($newDestination, $operator);
+    
+    }
+
+    /* IF FORM 3 */
 
     if (isset($_POST['price'])){
 
@@ -20,16 +39,11 @@
         $destination->add($newDestination, $operator);
     
     }
-
-    if (isset($_POST['link'])){
-
-        $newTourOp = new TourOperator(['name'=>$_POST['name'], 'grade'=>$_POST['grade'], 'link'=>$_POST['link'], 'is_premium'=>$_POST['premium']]);
-        $tourOp->add($newTourOp);
-    }
+    
 
 ?>
 
-<!-- FORM 1 -->
+<!-- FORM 1 CREATE TO-->
 
 <h3>Create a new TO :</h3>
 <form action="Admin.php" method="post">
@@ -54,9 +68,39 @@
 
 </form>
 
-<!-- FORM 2 -->
+<!-- FORM 2 CREATE DESTI -->
 
-<!-- FORM 3 SELECT -->
+<h3>Create a new destination :</h3>
+<form action="Admin.php" method="post">
+    <div class="labels">
+        <label>* Location</label>
+        <input type="text" name="location" placeholder="Venise.." required>
+    </div>
+    <select name="to">
+            <option value="">choose a TO</option>
+
+            <?php foreach ($allTourOp as $rowTourop){ ?>
+                <option value="<?=$rowTourop->getId()?>"><?=$rowTourop->getName()?></option>
+            <?php } ?>
+        </select>
+    <div class="labels">
+        <label>* Description</label>
+        <input type="text" name="description" placeholder="Lorem Ipsum.." required>
+    </div>
+    <div class="labels">
+        <label>* Price</label>
+        <input type="text" name="price" placeholder="700$" required>
+    </div>
+    <div class="labels">
+        <label>* Image</label>
+        <input type="text" name="image" placeholder="/IMG/.." required>
+    </div>
+
+    <input type="submit" id='submit' value='Submit'>
+
+</form>
+
+<!-- FORM 3 CREATE ALL -->
 <h3>Create a new Trip :</h3>
 
 <form action="Admin.php" method="post" class="select">

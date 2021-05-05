@@ -12,12 +12,14 @@ class DestinationManager {
   public function add(Destination $destination, TourOperator $tour_operator)
   {
     
-
-    $q = $this->db->prepare('INSERT INTO destinations(location, price, id_tour_operator) VALUES(:location, :price, :id_tour_operator)');
+    var_dump($destination);
+    $q = $this->db->prepare('INSERT INTO destinations(location, price, id_tour_operator, img, description) VALUES(:location, :price, :id_tour_operator, :img, :description)');
     
     $q->bindValue(':location', $destination->getLocation());
     $q->bindValue(':price', $destination->getPrice());
     $q->bindValue(':id_tour_operator', $tour_operator->getId());
+    $q->bindValue(':description', $destination->getDescription());
+    $q->bindValue(':img', $destination->getImg());
     
     $q->execute();
     
@@ -59,7 +61,7 @@ class DestinationManager {
     return $test;
   }
 
-  public function getDestinationByLocation(Destination $location)
+  public function getDestinationByLocation($location)
   {
 
     $destinationCollection = [];
@@ -67,7 +69,7 @@ class DestinationManager {
     $q = $this->db->prepare('SELECT * FROM destinations WHERE location=?');
       
     
-    $q->execute([$location->getLocation()]);
+    $q->execute([$location]);
     $destinations = $q->fetchAll(PDO::FETCH_ASSOC);
     foreach ($destinations as $destinationArray) {
       array_push($destinationCollection, new Destination($destinationArray));

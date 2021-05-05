@@ -27,13 +27,13 @@
   -webkit-transform: translateY(0px);
   transform: translateY(0px);
   bottom: 0px;
-  background: #dd4343;
+  background: #5991e4;
 }
 
 .dropdown-item:hover, .dropdown-item:focus {
   color: #ffffff;
   text-decoration: none;
-  background-color: #dd4343;
+  background-color: #4386dd;
 }
 
 .dropdown-menu {
@@ -60,6 +60,14 @@ body {
 form {
   display: flex;
   margin: 1rem;
+}
+
+/* LIST TO */
+/* CARDS */
+.listTo {
+  width: 60rem;
+  display: flex;
+  align-items: center;
 }
 
 /*# sourceMappingURL=main.css.map */

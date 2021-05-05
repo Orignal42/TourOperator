@@ -27,4 +27,19 @@ class ReviewManager {
     }
 
 
+    public function getList(TourOperator $tour_operator)
+    {
+        $reviews = [];
+
+        $q = $this->db->prepare('SELECT reviews.* FROM `reviews` JOIN tour_operators ON reviews.id_tour_operator = tour_operators.id WHERE tour_operators.id = ?');
+        $q->execute([intval($tour_operator->getId())]);
+        while ($donnees = $q->fetch(PDO::FETCH_ASSOC))
+        {
+
+            array_push($reviews,new Review($donnees));
+
+        }
+        return $reviews;
+    }
+
 }
