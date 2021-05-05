@@ -41,8 +41,25 @@ form{
 }
 
 .footer{
+  position:absolute;
+  bottom:0;
+  background-color: white;
+  width: 100%;
+  height:8rem;
+}
+.pied{
+  display: flex;
+  flex-flow: row;
+  padding: 1rem;
+  justify-content: space-between;
+}
+.logos{
+  display: flex;
+  flex-flow: row;
 
-  width: auto;
-  height: 10rem;
-  background-color: aqua;
+}
+.logos img{
+ width: 2rem;
+ height: 2rem;   
+
 }

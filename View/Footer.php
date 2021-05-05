@@ -1,12 +1,12 @@
 <div class=footer>
-<div class="col-1"></div>
-<div class=tex>
+    <div class="pied">
+        <div class=text>
 
-            <div class="col-3">Faqs</div>
-            <div class="col-3">Contacts</div>
-            <div class="col-3">Conditions</div>
-</div>
-<div class="col-2"></div>
+                <div class="col-3">Faqs</div>
+                <div class="col-3">Contacts</div>
+                <div class="col-3">Conditions</div>
+        </div> 
+            <div class="col-2"></div>
         <div class="logos">
                     <div class="col-3">
                     <img src="/TourOperator/IMG/facebook-tile.svg">
@@ -16,6 +16,8 @@
                     <img src="/TourOperator/IMG/twitter-tile.svg">
                     </div>
         </div>
+    </div>  
+    <p>&#169;ComparOPerator  made in Simplon Factory</p>
 </div>
 
     <!-- BOOTSTRAP SCRIPT -->
