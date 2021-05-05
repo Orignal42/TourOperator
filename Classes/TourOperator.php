@@ -3,10 +3,10 @@
 class TourOperator {
     
     protected $id;
-    protected string $name;
-    protected string $link;
-    protected int $grade;
-    protected bool $is_premium;
+    protected $name;
+    protected $link;
+    protected $grade;
+    protected $is_premium;
 
     /* CONSTRUCT */
 

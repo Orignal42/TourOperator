@@ -4,11 +4,11 @@ class Destination {
 
     
     protected $id;
-    protected string $location;
-    protected string $img;
-    protected string $description;
-    protected int $price;
-    protected int $id_tour_operator;
+    protected $location;
+    protected $img;
+    protected $description;
+    protected $price;
+    protected $id_tour_operator;
 
 
     /* CONSTRUCT */

@@ -72,3 +72,22 @@ form {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+.footer{
+  background-color: white;
+  width: auto;
+  height:8rem;
+  display: flex;
+  flex-flow: row;
+  padding: 1rem;
+  
+}
+.logos{
+  display: flex;
+  flex-flow: row;
+}
+.logos img{
+ width: 2rem;
+ height: 2rem;   
+
+}

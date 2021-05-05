@@ -24,7 +24,7 @@ foreach ($allDestinations as $rowDestination){
             <h4><?=$rowDestination->getLocation()?></h4>
             <p class="card-text"><?=$rowDestination->getDescription()?></p>
         </div>
-        <a class="btn btn-primary" href="/View/ListTo.php?destination=<?=$rowDestination->getLocation()?>">See more</a>
+        <a class="btn btn-primary" href="/TourOperator/View/ListTo.php?destination=<?=$rowDestination->getLocation()?>">See more</a>
     </div>
 
 <?php

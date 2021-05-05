@@ -3,8 +3,8 @@
 class Review {
     
     protected $id;
-    protected string $message;
-    protected string $author;
+    protected $message;
+    protected $author;
     // protected int $id_tour_operator;
 
     /* CONSTRUCT */
