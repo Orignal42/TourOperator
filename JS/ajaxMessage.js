@@ -1,9 +1,10 @@
 let commentBtns = document.querySelectorAll('.btn-comment');
 let commentMsg = document.querySelector('.modal-body');
+let submitMsg = document.querySelector('.btn-form-review');
 
 commentBtns.forEach((btn)=>{
     btn.addEventListener('click', function (e) {
-        console.log(e.target.getAttribute('data-idTour'))
+        // console.log(e.target.getAttribute('data-idTour'))
         let idTO = e.target.getAttribute('data-idTour')
 
         let formData = new FormData()
@@ -14,12 +15,38 @@ commentBtns.forEach((btn)=>{
         }).then((response)=>{
             return response.text()
         }).then((data)=>{
-            console.log(data)
+            // console.log(data)
+            commentMsg.innerHTML = data
         })
     })
 })
 
 
-function sendMessage(){
+submitMsg.addEventListener('click',function (e){
+    e.preventDefault()
+    
+    let inputMessage = document.querySelector('#input-message')
+    let inputAuthor = document.querySelector('#input-author')
 
-}
+    let idTO = document.querySelector('.box-review').getAttribute('id')
+
+    let formData = new FormData()
+    formData.append('idTO', idTO)
+    formData.append('message', inputMessage.value)
+    formData.append('author', inputAuthor.value)
+
+
+
+    fetch('addReview.php',{
+        method:'post',
+        body:formData
+    }).then((response)=>{
+        return response.text()
+    }).then((data)=>{
+
+        commentMsg.innerHTML=data
+        inputAuthor.value = ''
+        inputMessage.value = ''
+    })
+
+})

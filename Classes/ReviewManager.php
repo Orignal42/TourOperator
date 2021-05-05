@@ -9,7 +9,7 @@ class ReviewManager {
     $this->db = $db;
   }
 
-    public function add(Review $review)
+    public function add(Review $review, TourOperator $tour_operator)
     {
       
 
@@ -17,7 +17,7 @@ class ReviewManager {
       
       $q->bindValue(':message', $review->getMessage());
       $q->bindValue(':author', $review->getAuthor());
-      $q->bindValue(':id_tour_operator', $review->getIdTourOperator());
+      $q->bindValue(':id_tour_operator', $tour_operator->getId());
       
       $q->execute();
       

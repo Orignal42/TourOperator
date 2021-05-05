@@ -5,7 +5,7 @@ class Review {
     protected $id;
     protected string $message;
     protected string $author;
-    protected int $id_tour_operator;
+    // protected int $id_tour_operator;
 
     /* CONSTRUCT */
 
@@ -51,13 +51,13 @@ class Review {
         $this->author = $author;
     }
 
-    public function getIdTourOperator (){
-        return $this->id_tour_operator;
-    }
+    // public function getIdTourOperator (){
+    //     return $this->id_tour_operator;
+    // }
 
-    public function setIdTourOperator ($id_tour_operator){
-        $this->id_tour_operator = $id_tour_operator;
-    }
+    // public function setId_tour_operator ($id_tour_operator){
+    //     $this->id_tour_operator = $id_tour_operator;
+    // }
 
 }
 

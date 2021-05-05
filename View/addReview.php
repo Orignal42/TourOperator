@@ -8,6 +8,9 @@
 
     $tourOp = new TourOperator(['id'=>intval($_POST['idTO'])]);
 
+    $newReview = new Review(['message'=>$_POST['message'], 'author'=>$_POST['author']]);
+    $reviewManager->add($newReview, $tourOp);
+
     $reviews = $reviewManager->getList($tourOp);
 
 ?>

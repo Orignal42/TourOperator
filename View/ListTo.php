@@ -21,6 +21,7 @@
        foreach ($arrayDestination as $destination){ 
            $to =  $test->getDestibyTo($destination);
            ?>
+
                        
             <div class="card mb-3" style="width: 800px;">
                 <div class="row g-0">
@@ -42,17 +43,30 @@
 
                 <!-- Modal -->
                 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                <div class="modal-dialog">
+                <div class="modal-dialog modal-dialog-scrollable">
                     <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="staticBackdropLabel">Comments</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                       
+                       <!-- AJAX POUR LES COMS DANS JS ET GETREVIEW -->
+
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <h5>Write your comment...</h5>
+                        <form action="" method="">
+                        <div class="labels">
+                            <label>* Name</label>
+                            <input id="input-author" type="text" name="author" placeholder="Pierre" required>
+                        </div>
+                        <div class="labels">
+                            <label>* Comment</label>
+                            <input id="input-message" type="textarea" name="comment" placeholder="Your comment" required>
+                        </div>
+                        <button class="btn btn-dark btn-form-review" id='submit' type="button" class="">Dark</button>
+                        </form>
+                        <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                     </div>
                     </div>
                 </div>
