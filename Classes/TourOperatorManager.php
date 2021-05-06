@@ -48,8 +48,12 @@ class TourOperatorManager {
       $q->execute();
       }
 
-      public function getDelete(){
-        $q= $this->db->prepare('DELETE  FROM tour_operators JOIN destinations WHERE id_tour_operator.destination =id.tour_operators');
-        $q->execute();
-        }
+/* permet de supprimer la ligne concernée*/
+public function DeleteTO(TourOperator $tour_operator){
+  $q= $this->db->prepare('DELETE  FROM tour_operators WHERE id= :id');
+  $q->bindValue(':id', $tour_operator->getId());
+  $q->execute();
+}
+
+
 }

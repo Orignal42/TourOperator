@@ -97,9 +97,12 @@ class DestinationManager {
   }
 
   /* AJOUTER INFO FORM SELECT */
-  public function getDelete(){
-    $q= $this->db->prepare('DELETE  FROM destinations WHERE id.destinations');
-    $q->execute();
+
+  /* permet de supprimer la ligne concernée*/
+  public function DeleteDestination(Destination $destination){
+      $q= $this->db->prepare('DELETE  FROM destinations WHERE id= :id');
+      $q->bindValue(':id', $destination->getId());
+      $q->execute();
     }
   
 

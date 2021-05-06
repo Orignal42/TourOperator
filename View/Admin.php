@@ -8,7 +8,7 @@
 
     $destination = new DestinationManager($pdo);
     $allDestinations = $destination->getListGroupByName();
-
+    $destinationList = $destination->getList();
     $tourOp = new TourOperatorManager($pdo);
     $allTourOp = $tourOp->getList();
 
@@ -40,14 +40,24 @@
     
     }
 
-    if (isset($_POST['destination'])){
 
-        $newDestination = new Destination(['location'=>$_POST['dellocation']]);
-        $destination->getDelete();
+
+
+    if (isset($_POST['deletedestination'])){
+var_dump($_POST['deletedestination']);
+        $newdestination = new Destination(['id'=>$_POST['deletedestination']]);
+        $destination->DeleteDestination($newdestination);
+        
     
     }
     
-
+    if (isset($_POST['deleteto'])){
+        var_dump($_POST['deleteto']);
+                $operator = new TourOperator(['id'=>$_POST['deleteto']]);
+                $tourOp->DeleteTO($operator);
+                
+            
+            }
     
 
 ?>
@@ -155,60 +165,71 @@
         <input type="submit" id='submit' value='Submit'>
     </div>
 
-    
-
-       
-
-
-    <div class="delete TO">
-        
-        <div class="labels">
-            <label >Delete TO :</label>
-        </div>
-    <div class="rightTab">
-        <select name="to">
-            <option value="">Please choose a TO</option>
-
-            <?php foreach ($allTourOp as $rowTourOp) { ?>
-
-                <option value="<?=intval($rowTourOp->getId())?>"><?=$rowTourOp->getName()?></option>
-              
-
-            <?php } ?>
-            <input type="submit" id='Delete' value='Delete'>
-        </select>
-    </div>
-</div>
-
-
-
-
-<div class="labels">
+          
+</form>
+<h3>Delete Destination :</h3>
+<form action="Admin.php" method="post" class="select">
+                    
+    <div class="labels">
         <label>Delete Location :</label>
     </div>
     <div class="rightTab">
-        <select name="dellocation">
+        <select name="deletedestination">
             <option value="">Please choose a location</option>
 
-            <?php foreach ($allDestinations as $rowDestination) { ?>
+            <?php 
+           
+            foreach ($destinationList as $rowDestination) { 
+                ?>
 
-                <option value="<?=$rowDestination->getId()?>"><?=$rowDestination->getLocation()?></option>
+                <option value="<?= $rowDestination->getId()?>"><?=$destination->getDestibyTo($rowDestination)->getName()?> : <?=$rowDestination->getLocation()?></option>
 
             <?php } ?>
-            </div>  
+            
         </select>
-      
-            <input type="submit" id='Delete destinations' value='Delete'>
-        </select>
+        <input type="submit" id='submit' value='Delete'>
+    
     </div>
-</div>
+
+          
+</form>
+<h3>Delete TO :</h3>
+<form action="Admin.php" method="post" class="select">
+                    
+    <div class="labels">
+        <label>Delete TO :</label>
+    </div>
+    <div class="rightTab">
+        <select name="deleteto">
+            <option value="">Please choose a </option>
+
+           
+           
+           <?php foreach ($allTourOp as $rowTourop){ ?>
+            <option value="<?=$rowTourop->getId()?>"><?=$rowTourop->getName()?></option>
+        <?php } ?>
+        </select>
+        <input type="submit" id='submit' value='Delete'>
+    
+    </div>
+
+          
 </form>
 
 
 
 
+
+
 <?php
-
     include 'Footer.php';
+//ALTER TABLE dbo.T2
+// DROP CONSTRAINT FK_T1_T2   -- or whatever it's called
 
+// ALTER TABLE dbo.T2
+//    ADD CONSTRAINT FK_T1_T2_Cascade
+//    FOREIGN KEY (EmployeeID) REFERENCES dbo.T1(EmployeeID) ON DELETE CASCADE
 ?>
+
+
+
