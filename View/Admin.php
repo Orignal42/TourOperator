@@ -39,6 +39,15 @@
         $destination->add($newDestination, $operator);
     
     }
+
+    if (isset($_POST['destination'])){
+
+        $newDestination = new Destination(['location'=>$_POST['dellocation']]);
+        $destination->getDelete();
+    
+    }
+    
+
     
 
 ?>
@@ -143,12 +152,56 @@
     </div>
     <div class="rightTab">
         <input type="text" name="price" required placeholder="600$">
+        <input type="submit" id='submit' value='Submit'>
     </div>
 
     
 
-        <input type="submit" id='submit' value='Submit'>
+       
 
+
+    <div class="delete TO">
+        
+        <div class="labels">
+            <label >Delete TO :</label>
+        </div>
+    <div class="rightTab">
+        <select name="to">
+            <option value="">Please choose a TO</option>
+
+            <?php foreach ($allTourOp as $rowTourOp) { ?>
+
+                <option value="<?=intval($rowTourOp->getId())?>"><?=$rowTourOp->getName()?></option>
+              
+
+            <?php } ?>
+            <input type="submit" id='Delete' value='Delete'>
+        </select>
+    </div>
+</div>
+
+
+
+
+<div class="labels">
+        <label>Delete Location :</label>
+    </div>
+    <div class="rightTab">
+        <select name="dellocation">
+            <option value="">Please choose a location</option>
+
+            <?php foreach ($allDestinations as $rowDestination) { ?>
+
+                <option value="<?=$rowDestination->getId()?>"><?=$rowDestination->getLocation()?></option>
+
+            <?php } ?>
+            </div>  
+        </select>
+      
+            <input type="submit" id='Delete destinations' value='Delete'>
+        </select>
+    </div>
+</div>
 </form>
 
 

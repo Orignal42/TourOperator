@@ -64,7 +64,7 @@
                             <label>* Comment</label>
                             <input id="input-message" type="textarea" name="comment" placeholder="Your comment" required>
                         </div>
-                        <button class="btn btn-dark btn-form-review" id='submit' type="button" class="">Dark</button>
+                        <button class="btn btn-dark btn-form-review" id='submit' type="button" class="">Ajouter</button>
                         </form>
                         <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                     </div>

@@ -43,4 +43,13 @@ class TourOperatorManager {
     }
 
 
+      public function getUpdate(){
+      $q= $this->db->prepare('UPDATE tour_operators FROM tour_operators WHERE is_premium SET is_premium=:is_premium');
+      $q->execute();
+      }
+
+      public function getDelete(){
+        $q= $this->db->prepare('DELETE  FROM tour_operators JOIN destinations WHERE id_tour_operator.destination =id.tour_operators');
+        $q->execute();
+        }
 }
