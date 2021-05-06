@@ -1,4 +1,5 @@
 <?php
+session_start();
 
     include '../Process/Autoload.php';
 
@@ -165,70 +166,69 @@ var_dump($_POST['deletedestination']);
         <input type="submit" id='submit' value='Submit'>
     </div>
 
-          
-</form>
-<h3>Delete Destination :</h3>
-<form action="Admin.php" method="post" class="select">
+        
+         
+                </form>
+    <div class=delete>
+            <div class=deletelocation>
+                <h3>Delete Destination :</h3>
+                <form action="Admin.php" method="post" class="select">
+                                    
+                    <div class="labels">
+                        <label>Delete Location :</label>
+                    </div>
+                    <div class="rightTab">
+                        <select name="deletedestination">
+                            <option value="">Please choose a location</option>
+
+                            <?php 
+                        
+                            foreach ($destinationList as $rowDestination) { 
+                                ?>
+
+                                <option value="<?= $rowDestination->getId()?>"><?=$destination->getDestibyTo($rowDestination)->getName()?> : <?=$rowDestination->getLocation()?></option>
+
+                            <?php } ?>
+                            
+                        </select>
+
+                        <input type="submit" id='submit' value='Delete'>
+                    </div>
+               
+             </div>
+                      
+                </form>
+             <div class="deleteto">
+                <h3>Delete TO :</h3>
+                <form action="Admin.php" method="post" class="select">
+                                    
+                    <div class="labels">
+                        <label>Delete TO :</label>
+                    </div>
+                    <div class="rightTab">
+                        <select name="deleteto">
+                            <option value="">Please choose a TO</option>
+
+                        
+                        
+                        <?php foreach ($allTourOp as $rowTourop){ ?>
+                            <option value="<?=$rowTourop->getId()?>"><?=$rowTourop->getName()?></option>
+                        <?php } ?>
+                        </select>
+                        <input type="submit" id='submit' value='Delete'>
                     
-    <div class="labels">
-        <label>Delete Location :</label>
+                    </div>
+            </div>
+                        
+                </form>
     </div>
-    <div class="rightTab">
-        <select name="deletedestination">
-            <option value="">Please choose a location</option>
-
-            <?php 
-           
-            foreach ($destinationList as $rowDestination) { 
-                ?>
-
-                <option value="<?= $rowDestination->getId()?>"><?=$destination->getDestibyTo($rowDestination)->getName()?> : <?=$rowDestination->getLocation()?></option>
-
-            <?php } ?>
-            
-        </select>
-        <input type="submit" id='submit' value='Delete'>
-    
-    </div>
-
-          
+         
+<form action='Sessionend.php'>
+    <input type="submit" id='submit' value='Deconnection'>
 </form>
-<h3>Delete TO :</h3>
-<form action="Admin.php" method="post" class="select">
-                    
-    <div class="labels">
-        <label>Delete TO :</label>
-    </div>
-    <div class="rightTab">
-        <select name="deleteto">
-            <option value="">Please choose a </option>
-
-           
-           
-           <?php foreach ($allTourOp as $rowTourop){ ?>
-            <option value="<?=$rowTourop->getId()?>"><?=$rowTourop->getName()?></option>
-        <?php } ?>
-        </select>
-        <input type="submit" id='submit' value='Delete'>
-    
-    </div>
-
-          
-</form>
-
-
-
-
-
-
 <?php
     include 'Footer.php';
-//ALTER TABLE dbo.T2
-// DROP CONSTRAINT FK_T1_T2   -- or whatever it's called
 
-// ALTER TABLE dbo.T2
-//    ADD CONSTRAINT FK_T1_T2_Cascade
-//    FOREIGN KEY (EmployeeID) REFERENCES dbo.T1(EmployeeID) ON DELETE CASCADE
 ?>
 
 

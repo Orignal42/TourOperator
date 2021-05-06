@@ -27,7 +27,7 @@
         <a class="nav-link" href="/TourOperator/Index.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/TourOperator/View/Admin.php">Admin</a>
+        <a class="nav-link" href="/TourOperator/View/Connection.php">Admin</a>
       </li>
             <li class="nav-item">
         <a class="nav-link" href="#">Link</a>
