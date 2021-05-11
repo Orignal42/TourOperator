@@ -1,0 +1,326 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap");
+/* ??????? */
+/* POC */
+/* Underline Effect*/
+.nav-item {
+  position: relative;
+}
+
+.navbar-collapse ul li a.nav-link:before {
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: transparent;
+  content: "";
+  opacity: 0;
+  -ms-transition: opacity 0.3s, -webkit-transform 0.3s;
+  -webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+  transition: opacity 0.3s, transform 0.3s;
+  -ms-transform: translateY(10px);
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+}
+
+.navbar-collapse ul li:hover a.nav-link:before {
+  opacity: 1;
+  -ms-transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  transform: translateY(0px);
+  bottom: 0px;
+  background: #5991e4;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #4386dd;
+}
+
+.dropdown-menu {
+  border: 0px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+h2 {
+  color: #0a4870;
+  font-weight: 500;
+}
+
+.booking-card {
+  font-family: "Sofia", sans-serif;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+}
+ul .booking-card {
+  position: relative;
+  width: 300px;
+  display: flex;
+  flex: 0 0 300px;
+  flex-direction: column;
+  margin: 20px;
+  margin-bottom: 30px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  overflow: hidden;
+  background-position: center;
+  background-size: cover;
+  text-align: center;
+  color: #0a4870;
+  transition: 0.3s;
+}
+ul .booking-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(10, 72, 112, 0);
+  transition: 0.3s;
+}
+ul .booking-card .book-container {
+  height: 200px;
+}
+ul .booking-card .book-container .content {
+  position: relative;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  transform: translateY(-200px);
+  transition: 0.3s;
+}
+ul .booking-card .book-container .content .btn {
+  border: 3px solid white;
+  padding: 10px 15px;
+  background: none;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+ul .booking-card .book-container .content .btn:hover {
+  background: white;
+  border: 0px solid white;
+  color: #0a4870;
+}
+ul .booking-card .informations-container {
+  flex: 1 0 auto;
+  padding: 20px;
+  background: #f0f0f0;
+  transform: translateY(206px);
+  transition: 0.3s;
+}
+ul .booking-card .informations-container .title {
+  position: relative;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+ul .booking-card .informations-container .title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  width: 50px;
+  margin: auto;
+  background: #0a4870;
+}
+ul .booking-card .informations-container .price {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+ul .booking-card .informations-container .price .icon {
+  margin-right: 10px;
+}
+ul .booking-card .informations-container .more-information {
+  opacity: 0;
+  transition: 0.3s;
+}
+ul .booking-card .informations-container .more-information .info-and-date-container {
+  display: flex;
+}
+ul .booking-card .informations-container .more-information .info-and-date-container .box {
+  flex: 1 0;
+  padding: 15px;
+  margin-top: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: white;
+  font-weight: bold;
+  font-size: 0.9em;
+}
+ul .booking-card .informations-container .more-information .info-and-date-container .box .icon {
+  margin-bottom: 5px;
+}
+ul .booking-card .informations-container .more-information .info-and-date-container .box.info {
+  color: #ec992c;
+  margin-right: 10px;
+}
+ul .booking-card .informations-container .more-information .disclaimer {
+  margin-top: 20px;
+  font-size: 0.8em;
+  color: #7d7d7d;
+}
+ul .booking-card:hover::before {
+  background: rgba(10, 72, 112, 0.6);
+}
+ul .booking-card:hover .book-container .content {
+  opacity: 1;
+  transform: translateY(0px);
+}
+ul .booking-card:hover .informations-container {
+  transform: translateY(0px);
+}
+ul .booking-card:hover .informations-container .more-information {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  ul .booking-card::before {
+    background: rgba(10, 72, 112, 0.6);
+  }
+  ul .booking-card .book-container .content {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  ul .booking-card .informations-container {
+    transform: translateY(0px);
+  }
+  ul .booking-card .informations-container .more-information {
+    opacity: 1;
+  }
+}
+.credits {
+  display: table;
+  background: #0a4870;
+  color: white;
+  line-height: 25px;
+  margin: 10px auto;
+  padding: 20px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  text-align: center;
+}
+.credits a {
+  color: #e3ebf1;
+}
+
+h1 {
+  margin: 10px 20px;
+}
+
+/* ADMIN */
+/* FORMS */
+.forms-admin .panel-body {
+  padding: 15%;
+  margin-bottom: 13rem;
+  height: 44rem;
+  width: 32rem;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.forms-admin .panel-body .text-center img {
+  width: 40%;
+}
+.forms-admin .panel-body .text-center h2 {
+  padding: 1rem;
+}
+.forms-admin .panel-body .btnForget {
+  background: #9eb1dd;
+  border: none;
+}
+.forms-admin .panel-body .forms-admin .dropdown {
+  width: 100%;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+.forms-admin .panel-body .forms-admin .dropdown button {
+  width: 100%;
+}
+.forms-admin .panel-body .forms-admin .dropdown ul {
+  width: 100%;
+}
+
+html {
+  cursor: url(/IMG/laptop.png);
+}
+
+body {
+  background-color: #fad8ae;
+  text-align: center;
+}
+
+h1, h2, h3, h4, a {
+  font-family: "Roboto Slab", serif;
+}
+
+h1 {
+  padding: 1rem;
+}
+
+/***************** INDEX **************/
+/* CARDS */
+.card-index {
+  display: flex;
+}
+.card-index .marg {
+  margin: 1rem;
+}
+
+.about img {
+  width: 60%;
+}
+
+/* MAIN PAGE */
+main {
+  position: relative;
+  z-index: 1;
+  padding: 2em 1em 4em;
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/************ LIST TO *****************/
+/* CARDS */
+.listTo {
+  width: 60rem;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+/**************** BACK TO TOP BTN *************/
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  display: none;
+}
+
+/*# sourceMappingURL=main.css.map */
